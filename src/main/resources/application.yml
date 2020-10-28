@@ -1,0 +1,39 @@
+server:
+  port: 8888
+
+management:
+  server:
+    servlet:
+      context-path: /admin
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://netflix:eureka@localhost:8761/eureka
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+
+spring:
+  application:
+    name: brewery-config
+  cloud:
+    config:
+      server:
+        git:
+#          uri: https://github.com/zeeroiq/brewery-config-repo
+          uri: git@github.com:zeeroiq/brewery-config-repo.git
+#          branch: main
+          clone-on-start: true
+          search-paths: {application}
+          basedir: target/config
+
+logging:
+  level:
+    com.netflix.discovery: debug
+    org:
+      springframework:
+        cloud: debug
+        web: debug
+
