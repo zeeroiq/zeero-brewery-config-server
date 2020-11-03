@@ -22,12 +22,12 @@ spring:
     config:
       server:
         git:
-#          uri: https://github.com/zeeroiq/brewery-config-repo
-          uri: git@github.com:zeeroiq/brewery-config-repo.git
-#          branch: main
+          uri: https://github.com/zeeroiq/brewery-config-repo
+#          uri: git@github.com:zeeroiq/brewery-config-repo.git
           clone-on-start: true
-          search-paths: {application}
+          search-paths: "{application}"
           basedir: target/config
+          default-label: main
 
 logging:
   level:
