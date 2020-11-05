@@ -1,3 +1,9 @@
 # should be env property
 encrypt:
   key: MySecretKey
+
+# eureka client configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://netflix:eureka@localhost:8761/eureka
