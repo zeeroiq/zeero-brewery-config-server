@@ -1,0 +1,3 @@
+# should be env property
+encrypt:
+  key: MySecretKey
