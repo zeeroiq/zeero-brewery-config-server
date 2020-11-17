@@ -38,6 +38,9 @@ dependencies {
 
 // configuration of docker task
 apply plugin: 'com.palantir.docker'
+
+String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'zeeroiq'
+String imageName = "${dockerHubUsernameProperty}/${project.name}:$version"
 bootJar {
     layered {
         enabled = true
@@ -45,7 +48,8 @@ bootJar {
     }
 }
 docker {
-    name "${project.name}:${project.version}"
+//    name "${project.name}:${project.version}"
+    name imageName
     tag project.name, project.version as String
     dockerfile file('src/main/docker/Dockerfile')
     files "build/libs/${bootJar.archiveFileName.get()}"
